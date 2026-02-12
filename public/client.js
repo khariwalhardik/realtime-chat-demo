@@ -125,6 +125,15 @@ function displayMessage(msg) {
     const textNode = document.createTextNode(msg.text);
     item.appendChild(textNode);
 
+    // Timestamp
+    if (msg.timestamp) {
+        const time = new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const timeSpan = document.createElement('span');
+        timeSpan.classList.add('timestamp');
+        timeSpan.textContent = time;
+        item.appendChild(timeSpan);
+    }
+
     messagesList.appendChild(item);
     scrollToBottom();
 }
